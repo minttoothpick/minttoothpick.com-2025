@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "text": "Home",
+      "url": "/"
+    },
+    {
+      "text": "Collage",
+      "url": "/collage/"
+    },
+    {
+      "text": "Book Drawings",
+      "url": "/book-drawings/"
+    }
+  ]
+}
