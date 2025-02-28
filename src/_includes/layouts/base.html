@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }}</title>
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
     {% include "partials/site-head.html" %}
+
+    {# The tabindex value allows the skipnav link to focus on this element #}
     <main tabindex="-1" id="main-content">{% block content %}{% endblock %}</main>
   </body>
 </html>
