@@ -1,5 +1,4 @@
 ---
-title: 'minttoothpick'
 layout: 'layouts/home.html'
 ---
 I hope you find something delightful here. ✌️

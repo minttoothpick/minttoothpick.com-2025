@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ title }}</title>
+    {# Title format: "Page / minttoothpick.com" or "minttoothpick.com" #}
+    <!-- {% set pageTitle = [title, " / ", site.name] | join if title else site.name %} -->
+    {% if title %}
+      {% set pageTitle = title + " / " + site.name %}
+    {% else %}
+      {% set pageTitle = site.name %}
+    {% endif %}
+    <title>{{ pageTitle }}</title>
     <link href="{{ '/css/style.css' | url }}" rel="stylesheet">
   </head>
   <body class="flow-super">
