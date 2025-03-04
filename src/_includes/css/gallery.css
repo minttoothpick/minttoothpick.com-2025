@@ -1,0 +1,172 @@
+/* gallery.css
+   ======================================================================== */
+
+/* this is not currently being used or included in compiled style.css */
+.gallery > * + * {
+  margin-top: var(--space-md);
+}
+
+@media screen and (min-width: 600px) {
+  .gallery > * + * {
+    margin-top: 0;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    column-gap: var(--gap);
+    row-gap: 0;
+  }
+
+  .gallery figure {
+    /* By default, expand to the end */
+    grid-column-end: 11;
+    margin-bottom: var(--gap);
+  }
+
+  /* Why isn't this working? */
+  .gallery figure:last-of-type {
+    margin-bottom: 0;
+  }
+
+  /**
+   * Column span: how many columns to... span
+   */
+  .gallery figure[data-colspan="2"],
+  .gallery figure[data-colspan="3"],
+  .gallery figure[data-colspan="4"],
+  .gallery figure[data-colspan="5"] {
+    grid-column-end: span 5;
+  }
+
+  .gallery figure[data-colspan="6"],
+  .gallery figure[data-colspan="7"],
+  .gallery figure[data-colspan="8"],
+  .gallery figure[data-colspan="10"],
+  .gallery figure[data-colspan="full"] {
+    grid-column-end: span 10;
+  }
+
+  /**
+   * Column start: 1 is more like 0
+   */
+  .gallery figure[data-colstart="1"],
+  .gallery figure[data-colstart="2"],
+  .gallery figure[data-colstart="3"],
+  .gallery figure[data-colstart="4"] {
+    grid-column-start: 1;
+  }
+
+  .gallery figure[data-colstart="5"],
+  .gallery figure[data-colstart="6"] {
+    grid-column-start: 6;
+  }
+
+  /**
+   * Push/pull vertical margins
+   */
+  .gallery figure[data-margin="2"] {
+    margin-top: calc(var(--gap) * 2);
+  }
+
+  .gallery figure[data-margin="3"] {
+    margin-top: calc(var(--gap) * 3);
+  }
+
+  .gallery figure[data-margin="6"] {
+    margin-top: calc(var(--gap) * 6);
+  }
+
+  .gallery figure[data-margin="-2"] {
+    margin-top: calc(var(--gap) * -2); /* 3.5 em */
+    margin-top: -3.5em;
+  }
+
+  .gallery figure[data-margin="-3"] {
+    margin-top: calc(var(--gap) * -3);
+  }
+
+  .gallery figure[data-margin="-6"] {
+    margin-top: 0; /* hmmmm */
+  }
+
+  /**
+   * Vertical self alignment on grid
+   */
+  .gallery figure[data-align="end"] {
+    align-self: end;
+  }
+
+  .gallery figure[data-align="center"] {
+    align-self: center;
+  }
+} /* min-width: 600 */
+
+@media screen and (min-width: 800px) {
+    /**
+   * Column span: how many columns to... span
+   */
+  .gallery figure[data-colspan="2"] {
+    grid-column-end: span 2;
+  }
+
+  .gallery figure[data-colspan="3"] {
+    grid-column-end: span 3;
+  }
+
+  .gallery figure[data-colspan="4"] {
+    grid-column-end: span 4;
+  }
+
+  .gallery figure[data-colspan="5"] {
+    grid-column-end: span 5;
+  }
+
+  .gallery figure[data-colspan="6"] {
+    grid-column-end: span 6;
+  }
+
+  .gallery figure[data-colspan="7"] {
+    grid-column-end: span 7;
+  }
+
+  .gallery figure[data-colspan="8"] {
+    grid-column-end: span 8;
+  }
+
+  .gallery figure[data-colspan="10"],
+  .gallery figure[data-colspan="full"] {
+    grid-column-end: span 10;
+  }
+
+  /**
+   * Column start: 1 is more like 0
+   */
+  .gallery figure[data-colstart="1"] {
+    grid-column-start: 1;
+  }
+
+  .gallery figure[data-colstart="2"] {
+    grid-column-start: 2;
+  }
+
+  .gallery figure[data-colstart="3"] {
+    grid-column-start: 3;
+  }
+
+  .gallery figure[data-colstart="4"] {
+    grid-column-start: 4;
+  }
+
+  .gallery figure[data-colstart="5"] {
+    grid-column-start: 5;
+  }
+
+  .gallery figure[data-colstart="6"] {
+    grid-column-start: 6;
+  }
+
+  .gallery figure[data-margin="-6"] {
+    margin-top: calc(var(--gap) * -6);
+  }
+}

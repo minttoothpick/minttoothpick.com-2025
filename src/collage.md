@@ -3,15 +3,17 @@ layout: layouts/page
 title: Collage
 ---
 
-# My Collage Works
-
 <div class="gallery">
-{%- for collage in collections.collages -%}
-  <div class="gallery-item">
+{%- for collage in collections.collages | reverse -%}
+  <figure class="gallery-item">
     <a href="{{ collage.url }}">
-      <img src="{{ collage.data.image }}" alt="{{ collage.data.title }}">
-      {# <h2>{{ collage.data.title }}</h2> #}
+      <img src="{{ collage.data.image }}" alt="">
     </a>
-  </div>
+    {#
+    <figcaption class="text-small">
+      <p>{{ collage.data.title }}</p>
+    </figcaption>
+    #}
+  </figure>
 {%- endfor -%}
 </div>

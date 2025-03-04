@@ -1,0 +1,21 @@
+/* header.css
+   ======================================================================== */
+
+.site-nav__list {
+  column-gap: var(--gap);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.site-nav__item > a {
+  text-decoration: underline;
+}
+
+.site-nav__item > a:hover {
+  text-decoration: none;
+}
+
+.site-nav__item > a[aria-current="page"],
+.site-nav__item > a[data-state="active"] {
+  font-weight: bold;
+}

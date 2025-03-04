@@ -1,0 +1,63 @@
+/* flow.css
+   ======================================================================== */
+
+/**
+ * Flow space
+ * https://every-layout.dev/layouts/stack/
+ * https://piccalil.li/quick-tip/flow-utility/
+ */
+ .flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+/**
+ * Use these for nested flow, like on the body; can't set `--flow-space`
+ * on `articles-list` *and* `post`, b/c it'll be overridden.
+ */
+.flow-condensed > * + * {
+  margin-block-start: var(--flow-condensed);
+}
+
+.flow-expanded > * + * {
+  margin-block-start: var(--flow-expanded);
+}
+
+.flow-super > * + * {
+  margin-block-start: var(--flow-super);
+}
+
+/**
+ * Flow for longform prose
+ */
+
+/* Extra block space surrounding figures */
+.flow-prose > figure,
+.flow-prose > figure + * {
+  --flow-space: var(--flow-expanded);
+}
+
+/* Extra block start space on headings */
+.flow-prose > :is(h2, h3) {
+  --flow-space: var(--flow-expanded);
+}
+
+/* Less block start space on elems following headings */
+.flow-prose > :is(h2, h3) + * {
+  --flow-space: var(--s0);
+}
+
+/* Less flow space between sibling paragraphs */
+.flow-prose > p + p {
+  --flow-space: var(--s0);
+}
+
+/* Add flow space to things inside of list items */
+.flow-prose :not([role="list"]) li > ol,
+.flow-prose :not([role="list"]) li > ul,
+.flow-prose :not([role="list"]) li > * + *,
+.flow-prose ol:not(.list-condensed, [role="list"]) > * + *,
+.flow-prose ul:not(.list-condensed, [role="list"]) > * + * {
+/* .post ol > * + *,
+.post ul > * + * { */
+  margin-block-start: var(--s0);
+}

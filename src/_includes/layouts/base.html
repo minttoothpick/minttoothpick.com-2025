@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link href="{{ '/css/style.css' | url }}" rel="stylesheet">
   </head>
-  <body>
-    {% include "partials/site-head.html" %}
+  <body class="flow-super">
+
+    <header class="site-header container">
+      <a class="hidden-til-focus" href="#main-content">Skip to content</a>
+      <nav aria-label="Primary" class="site-nav">
+        <ul class="site-nav__list" role="list">
+          {%- for item in navigation.items -%}
+            <li class="site-nav__item">
+              <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>{{ item.text }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    </header>
 
     {# The tabindex value allows the skipnav link to focus on this element #}
     <main tabindex="-1" id="main-content">{% block content %}{% endblock %}</main>
