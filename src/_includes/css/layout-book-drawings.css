@@ -1,0 +1,41 @@
+/* layout-book-drawings.css
+   ======================================================================== */
+
+.book-drawings {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--s0);
+}
+
+.book-drawings ::selection {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.book {
+  width: var(--book-width);
+}
+
+@media (min-width: 300px) {
+  .book {
+    width: calc(var(--book-width) * 4%);
+  }
+}
+
+@media (min-width: 500px) {
+  .book {
+    width: calc(var(--book-width) * 2%);
+  }
+}
+
+@media (min-width: 750px) {
+  .book {
+    width: calc(var(--book-width) * 1.5%);
+  }
+}
+
+@media (min-width: 1000px) {
+  .book {
+    width: calc(var(--book-width) * 0.9%);
+  }
+}

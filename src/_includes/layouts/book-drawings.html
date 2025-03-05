@@ -11,64 +11,16 @@
     </div>
   </article>
 
-  <style>
-    .book-drawings {
-      align-items: flex-end;
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--s0);
-    }
+  {# normalizing based on maximum width value?
+  {% set maxWidth %}24.5{% endset %}
+  <figure class="book" style="--book-width: {{ (book.w | int / maxWidth) * 100 }};">
+  #}
 
-    .book-drawings ::selection {
-      background: rgba(0, 0, 0, 0.25);
-    }
-  </style>
   <div class="book-drawings">
     {% for book in collections.booksWithDrawings %}
-        {% set src %}/images/books/{{ book.slug }}.png{% endset %}
-        {% set alt %}Black and white line drawing of the cover of “{{ book.title }}”{% endset %}
-        {#
-        {% set widthPercent %}
-          {% if book.w == null %}
-            1
-          {% endif %}
-        {% endset %}
-        #}
-
-        <style>
-          .book--percent.book--{{ loop.index }} {
-            width: calc({{ book.w | int }} * 4%);
-          }
-
-          @media (min-width: 300px) {
-            .book--percent.book--{{ loop.index }} {
-              width: calc({{ book.w | int }} * 3%);
-            }
-          }
-
-          @media (min-width: 500px) {
-            .book--percent.book--{{ loop.index }} {
-              width: calc({{ book.w | int }} * 2%);
-            }
-          }
-
-          @media (min-width: 750px) {
-            .book--percent.book--{{ loop.index }} {
-              width: calc({{ book.w | int }} * 1.5%);
-            }
-          }
-
-          @media (min-width: 1000px) {
-            .book--percent.book--{{ loop.index }} {
-              {# width: calc(({{ book.w | int }} + 3) * 1%); #}
-              width: calc(({{ book.w | int }} + 1) * 1%);
-            }
-          }
-        </style>
-
-        <figure class="book--percent book--{{ loop.index }}">
-          <img src="{{ src }}">
-        </figure>
+      <figure class="book" style="--book-width: {{ book.w | int }};">
+        <img src="/images/books/{{ book.slug }}.png" alt="Black and white line drawing of the cover of “{{ book.title }}”">
+      </figure>
     {% endfor %}
   </div>
 </div>
