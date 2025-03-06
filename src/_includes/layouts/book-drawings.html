@@ -18,8 +18,15 @@
 
   <div class="book-drawings">
     {% for book in collections.booksWithDrawings %}
-      <figure class="book" style="--book-width: {{ book.w | int }};">
-        <img src="/images/books/{{ book.slug }}.png" alt="Black and white line drawing of the cover of “{{ book.title }}”">
+      {# Those old iPhone drawings are too small; bump them up #}
+      {% if book.w == 6.5 %}
+        {% set bookWidth = 8 %}
+      {% else %}
+        {% set bookWidth = book.w | int %}
+      {% endif %}
+      <figure class="book" style="--book-width: {{ bookWidth }};">
+        {# <img src="/images/books/{{ book.slug }}.png" alt="Black and white line drawing of the cover of “{{ book.title }}”"> #}
+        {% bookImage book.slug, "Black and white line drawing of the cover of “" + book.title + "”" %}
       </figure>
     {% endfor %}
   </div>

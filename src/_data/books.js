@@ -1,6 +1,6 @@
 const Cache = require("@11ty/eleventy-cache-assets");
 const { parse } = require("csv-parse/sync");
-require("dotenv").config(); // Ensure .env variables are loaded
+require("dotenv").config();
 
 module.exports = async function() {
   let url = `https://docs.google.com/spreadsheets/d/${process.env.GOOGLE_SHEETS_ID}/gviz/tq?tqx=out:csv`;
