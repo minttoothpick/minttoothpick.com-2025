@@ -45,12 +45,8 @@
 /**
  * Limit prose width
  */
-.prose-width {
-  --max-inline-size: var(--text-measure);
-}
-
 .prose-width > * {
-  max-inline-size: var(--max-inline-size);
+  max-inline-size: var(--text-measure);
   word-break: break-word;
 }
 

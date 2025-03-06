@@ -1,15 +1,10 @@
-{% extends "layouts/page.html" %}
+{% extends "layouts/base.html" %}
 
 {% block content %}
 <div class="flow-expanded">
-  <article class="post layout-sidebar container">
-    <header class="post__header">
-      <h1>{{ title | safe }}</h1>
-    </header>
-    <div class="prose-width flow">
-      {{ content | safe }}
-    </div>
-  </article>
+  <div class="prose-width flow">
+    {{ content | safe }}
+  </div>
 
   {# normalizing based on maximum width value?
   {% set maxWidth %}24.5{% endset %}

@@ -1,11 +1,5 @@
 {% extends "layouts/base.html" %}
 
-{% set pageHeaderTitle = "Hey, y’all — welcome to my site" %}
-{% set pageHeaderSummary = content | safe %}
-
-{% block content %}
-  <div class="flow-super container">
-    {% include "partials/page-header.html" %}
-    </section>
-  </div>
-{% endblock content %}
+<div class="prose-width flow">
+  !!!{{ content | safe }}
+</div>

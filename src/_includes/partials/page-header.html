@@ -1,12 +1,7 @@
-{# If parent template doesn't set a custom title, use page title #}
+{# If parent template/content file doesn't set a custom title, use page title #}
 {% if not pageHeaderTitle %}{% set pageHeaderTitle = title | safe %}{% endif %}
 {% if not pageHeaderClass %}{% set pageHeaderClass = "flow" %}{% endif %}
 
-<div class="page-header {{ pageHeaderClass }}">
+<header class="prose-width {{ pageHeaderClass }}"><!-- page-header -->
   <h1>{{ pageHeaderTitle | safe }}</h1>
-  {% if pageHeaderSummary %}
-  <div class="page-header-summary prose-width flow">
-    {{ pageHeaderSummary | safe }}
-  </div>
-  {% endif %}
-</div>
+</header>

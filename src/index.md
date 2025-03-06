@@ -1,9 +1,10 @@
 ---
-layout: 'layouts/home.html'
+layout: layouts/prose.html
+pageHeaderTitle: "Hey, y’all — welcome to my site!"
 ---
 I hope you find something delightful here. ✌️
 
-For starters, here’s one of those Geocities-era “under construction” gifs rendered in chalk pastels.
+Also, I’m still working on things around here. So for starters, here’s one of those Geocities-era “under construction” gifs that I made with chalk pastels.
 
 <video autoplay loop muted playsinline>
   <source src="images/under-construction-animation.webm" type="video/webm">
