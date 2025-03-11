@@ -15,6 +15,13 @@ module.exports = (config) => {
   });
 
   /**
+   * Art collection
+   */
+  config.addCollection("art", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("art/*.md");
+  })
+
+  /**
    * Books with drawings
    * https://11ty.rocks/eleventyjs/collections/#collections-from-custom-data
    */
