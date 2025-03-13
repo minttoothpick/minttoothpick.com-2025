@@ -12,6 +12,52 @@
 }
 
 /**
+ * Limit prose width
+ */
+.prose-width > * {
+  max-inline-size: var(--text-measure);
+  word-break: break-word;
+}
+
+.full-bleed {
+  max-inline-size: var(--container-max-inline-size);
+  margin-inline-start: calc(var(--s2) * -1);
+  margin-inline-end: calc(var(--s2) * -1);
+}
+
+/* Center images/content when not wide enough to fill screen */
+.full-bleed > :not(figcaption) {
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+}
+
+/* Align caption text w/ prose */
+.full-bleed > figcaption {
+  max-inline-size: var(--text-measure);
+  margin-inline-start: var(--s2);
+  margin-inline-end: var(--s2);
+}
+
+.full-width {
+  max-inline-size: var(--container-max-inline-size);
+}
+
+.image-row {
+  /* max-inline-size: var(--container-max-inline-size); */
+  display: flex;
+  gap: var(--gap);
+  /* align-items: stretch; */
+  /* overflow: hidden; */
+}
+
+.image-row > img {
+  inline-size: 100%;
+  /* height: auto; */
+  /* flex: 1 1 0; */
+  /* object-fit: cover; */
+}
+
+/**
  * Layout: 50-50
  */
 @media (min-width: 700px) {
@@ -40,46 +86,6 @@
 
 .masonry a:not(.tag) {
   text-decoration: none;
-}
-
-/**
- * Limit prose width
- */
-.prose-width > * {
-  max-inline-size: var(--text-measure);
-  word-break: break-word;
-}
-
-/**
- * Figure element placement
- */
-.image-row {
-  display: flex;
-  gap: var(--s01);
-}
-
-.align-full-bleed {
-  --max-inline-size: auto;
-  display: grid;
-  grid-template-columns: [bleed-start] minmax(0, var(--text-measure)) [measure] 1fr [bleed-end];
-  margin-inline: calc(var(--gap) * -1);
-  margin-inline-end: calc(var(--gap) * -1);
-  margin-inline-start: calc(var(--gap) * -1);
-}
-
-.align-full-bleed > :not(figcaption) {
-  grid-column: bleed;
-  /* Center images that are not wide enough to cover */
-  margin-inline: auto;
-  margin-inline-end: auto;
-  margin-inline-start: auto;
-}
-
-.align-full-bleed > figcaption {
-  /* Add inline padding to offset pulled inline margins on `figure`. */
-  padding-inline: var(--gap);
-  padding-inline-end: var(--gap);
-  padding-inline-start: var(--gap);
 }
 
 @media (min-width: 440px) {
