@@ -17,9 +17,15 @@ Here’s another **prose-width** paragraph after the image.
 <!-- Full-width block with three images -->
 <div class="full-width">
   <figure class="image-row">
-    <img src="/images/collage/vigilled-wafted-flung.jpg" alt="Description 1">
-    <img src="/images/collage/self-portrait-with-exasperation.jpg" alt="Description 2">
-    <img src="/images/collage/a-fifth-attempt-at-certainty.jpg" alt="Description 3">
+    <div class="image-row-image">
+      <img src="/images/collage/vigilled-wafted-flung.jpg" alt="Description 1">
+    </div>
+    <div class="image-row-image">
+      <img src="/images/collage/self-portrait-with-exasperation.jpg" alt="Description 2">
+    </div>
+    <div class="image-row-image">
+      <img src="/images/collage/a-fifth-attempt-at-certainty.jpg" alt="Description 3">
+    </div>
   </figure>
 </div>
 

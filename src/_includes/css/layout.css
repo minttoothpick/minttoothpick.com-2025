@@ -45,13 +45,19 @@
 .image-row {
   /* max-inline-size: var(--container-max-inline-size); */
   display: flex;
+  flex-wrap: nowrap;
   gap: var(--gap);
   /* align-items: stretch; */
   /* overflow: hidden; */
 }
 
-.image-row > img {
-  inline-size: 100%;
+.image-row > .image-row-image {
+  flex: 0 0 auto;
+}
+
+.image-row  img {
+  /* height: 200px; */
+  /* inline-size: 100%; */
   /* height: auto; */
   /* flex: 1 1 0; */
   /* object-fit: cover; */
