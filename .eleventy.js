@@ -35,6 +35,50 @@ module.exports = (config) => {
   /* Shortcodes
    ======================================================================== */
 
+  config.addNunjucksAsyncShortcode("imageRow", async function(images) {
+    try {
+      const imageData = await Promise.all(images.map(async (imagePath) => {
+        // Add your source images directory to the path
+        const fullImagePath = `src/images${imagePath}`;
+
+        const metadata = await Image(fullImagePath, {
+          widths: [null], // Original size
+          formats: ["jpeg"],
+          outputDir: "./dist/images/",
+          urlPath: "/images/",
+          filenameFormat: (id, src, width, format) => {
+            // Preserve directory structure
+            const pathParts = src.split("/").slice(2); // Remove "src/images" prefix
+            return `${pathParts.join("/")}`;
+          },
+        });
+
+        const data = metadata.jpeg[0];
+        return {
+          src: data.url,
+          aspectRatio: data.width / data.height
+        };
+      }));
+
+      return `
+        <figure class="image-row">
+          ${imageData.map(img => `
+            <div class="image-row-image" style="--aspect-ratio: ${img.aspectRatio}">
+              <img src="${img.src}" alt="">
+            </div>
+          `).join("")}
+        </figure>
+      `
+      .replace(/>\s*<\/p><p>\s*</g, '>')  // Remove empty paragraphs
+      .replace(/<p>\s*<\/p>/g, '')        // Remove standalone empty paragraphs
+      .replace(/\s+/g, ' ')               // Replace multiple spaces with a single space
+      .trim();                            // Trim leading and trailing whitespace
+    } catch (error) {
+      console.error("Error processing image row:", error);
+      return `<div class="error">Image processing failed: ${error.message}</div>`;
+    }
+  });
+
   config.addNunjucksAsyncShortcode("bookImage", async function(slug, alt) {
     if (!slug) return ""; // No slug, no image
 

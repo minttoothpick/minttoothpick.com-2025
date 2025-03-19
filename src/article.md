@@ -4,6 +4,12 @@ layout: layouts/article.html
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+{% imageRow [
+  "/collage/vigilled-wafted-flung.jpg",
+  "/collage/moontuck.jpg",
+  "/collage/a-fifth-attempt-at-certainty.jpg"
+] %}
+
 Lorem ipsum odor amet, consectetuer adipiscing elit. Sit mollis primis taciti, mi sodales ornare. In donec leo natoque libero facilisis euismod habitasse. Ac sagittis mauris dui nam vehicula leo suspendisse. Cras nunc sem adipiscing luctus viverra luctus fames. Donec aenean montes malesuada enim sociosqu metus. Facilisi feugiat maecenas lacus risus donec.
 
 <!-- Full-bleed image with caption -->
@@ -21,7 +27,7 @@ Here’s another **prose-width** paragraph after the image.
       <img src="/images/collage/vigilled-wafted-flung.jpg" alt="Description 1">
     </div>
     <div class="image-row-image">
-      <img src="/images/collage/self-portrait-with-exasperation.jpg" alt="Description 2">
+      <img src="/images/collage/moontuck.jpg" alt="Description 2">
     </div>
     <div class="image-row-image">
       <img src="/images/collage/a-fifth-attempt-at-certainty.jpg" alt="Description 3">

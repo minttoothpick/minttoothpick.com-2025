@@ -43,19 +43,21 @@
 }
 
 .image-row {
-  /* max-inline-size: var(--container-max-inline-size); */
   display: flex;
-  flex-wrap: nowrap;
+  /* flex-wrap: nowrap; */
   gap: var(--gap);
+  width: 100%;
   /* align-items: stretch; */
   /* overflow: hidden; */
 }
 
 .image-row > .image-row-image {
-  flex: 0 0 auto;
+  flex: var(--aspect-ratio);
 }
 
-.image-row  img {
+.image-row img {
+  width: 100%;
+  height: auto;
   /* height: 200px; */
   /* inline-size: 100%; */
   /* height: auto; */
