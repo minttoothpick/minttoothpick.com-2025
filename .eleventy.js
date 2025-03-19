@@ -62,17 +62,17 @@ module.exports = (config) => {
 
       return `
         <figure class="image-row">
-          ${imageData.map(img => `
-            <div class="image-row-image" style="--aspect-ratio: ${img.aspectRatio}">
-              <img src="${img.src}" alt="">
-            </div>
-          `).join("")}
+          ${imageData
+            .map(
+              (img) => `
+              <div class="image-row-image" style="--aspect-ratio: ${img.aspectRatio}">
+                <img src="${img.src}" alt="">
+              </div>`
+            )
+            .join("")
+            .replace(/\n\s*/g, "")}
         </figure>
-      `
-      .replace(/>\s*<\/p><p>\s*</g, '>')  // Remove empty paragraphs
-      .replace(/<p>\s*<\/p>/g, '')        // Remove standalone empty paragraphs
-      .replace(/\s+/g, ' ')               // Replace multiple spaces with a single space
-      .trim();                            // Trim leading and trailing whitespace
+      `.trim();
     } catch (error) {
       console.error("Error processing image row:", error);
       return `<div class="error">Image processing failed: ${error.message}</div>`;
