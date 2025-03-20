@@ -8,7 +8,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   "/collage/vigilled-wafted-flung.jpg",
   "/collage/moontuck.jpg",
   "/collage/a-fifth-attempt-at-certainty.jpg"
-], "Hello caption? Lorem ipsum odor amet, consectetuer adipiscing elit. Sit mollis primis taciti, mi sodales ornare." %}
+], "Hello caption? Lorem ipsum odor amet, consectetuer adipiscing elit. Sit mollis primis taciti, mi sodales ornare.", [
+  "Collage of a greyscale human-like figure crouching; its eyes are bright orange and crescents of the same color float down toward its feet."
+] %}
 
 Lorem ipsum odor amet, consectetuer adipiscing elit. Sit mollis primis taciti, mi sodales ornare. In donec leo natoque libero facilisis euismod habitasse. Ac sagittis mauris dui nam vehicula leo suspendisse. Cras nunc sem adipiscing luctus viverra luctus fames. Donec aenean montes malesuada enim sociosqu metus. Facilisi feugiat maecenas lacus risus donec.
 

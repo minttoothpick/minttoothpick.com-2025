@@ -35,50 +35,57 @@ module.exports = (config) => {
   /* Shortcodes
    ======================================================================== */
 
-  config.addNunjucksAsyncShortcode("imageRow", async function(images, caption="") {
+  config.addNunjucksAsyncShortcode("imageRow", async function(images, caption="", alts=[]) {
     try {
-      const imageData = await Promise.all(images.map(async (imagePath) => {
-        const fullImagePath = `src/images${imagePath}`;
+      const imageData = await Promise.all(
+        images.map(async (imagePath) => {
+          const fullImagePath = `src/images${imagePath}`;
 
-        const metadata = await Image(fullImagePath, {
-          widths: [300, 600, 900],
-          formats: ["jpeg"],
-          outputDir: "./dist/images/",
-          urlPath: "/images/",
-          filenameFormat: (id, src, width, format) => {
-            const filename = path.basename(src, path.extname(src));
-            return `${filename}-${width}w.${format}`;
-          },
-        });
+          const metadata = await Image(fullImagePath, {
+            widths: [300, 600, 900],
+            formats: ["jpeg"],
+            outputDir: "./dist/images/",
+            urlPath: "/images/",
+            filenameFormat: (id, src, width, format) => {
+              const filename = path.basename(src, path.extname(src));
+              return `${filename}-${width}w.${format}`;
+            },
+          });
 
-        const data = metadata.jpeg;
-        return {
-          srcset: data.map(entry => `${entry.url} ${entry.width}w`).join(", "),
-          placeholder: data[0].url,
-          aspectRatio: data[0].width / data[0].height // Use the first image for aspect ratio
-        };
-      }));
+          const data = metadata.jpeg;
+          return {
+            srcset: data.map(entry => `${entry.url} ${entry.width}w`).join(", "),
+            placeholder: data[0].url,
+            // Use largest image to calculate ratio more accurately
+            aspectRatio: data[data.length - 1].width / data[data.length - 1].height
+          };
+        })
+      ); // imageData
 
       const captionHtml = caption ? `<figcaption class="text-small">${caption}</figcaption>` : "";
 
-      return `<figure class="flow-condensed"><div class="imageRow">${imageData
-        .map(img =>
-          `<div class="imageRow__item" style="--aspect-ratio: ${img.aspectRatio}">` +
-            `<img src="${img.placeholder}"` +
-                  `data-srcset="${img.srcset}"` +
-                  `data-sizes="auto"` +
-                  `class="lazyload"` +
-                  `alt="">` +
-          `</div>`
-        ).join("")}
-      </div>
-      ${captionHtml}
-    </figure>`
-      // .replace(/>\s+</g, '><')  // Remove whitespace between tags
-      .trim();
+      return `<figure class="flow-condensed">
+        <div class="imageRow">
+          ${imageData
+            .map(
+              (img, index) =>
+                `<div class="imageRow__item" style="--aspect-ratio: ${img.aspectRatio}">
+                  <img src="${img.placeholder}"
+                       data-srcset="${img.srcset}"
+                       data-sizes="auto"
+                       decoding="async"
+                       class="lazyload"
+                       loading="lazy"
+                       alt="${alts[index] || ""}">
+                </div>`
+            )
+            .join("")}
+        </div>
+        ${captionHtml}
+      </figure>`;
     } catch (error) {
       console.error("Error processing image row: ", error);
-      return `<div class="error">Image processing failed: ${error.message}</div>`;
+      return `<div class="error">Image could not be displayed.</div>`;
     }
   });
 
