@@ -18,6 +18,7 @@
     "dotenv": "^16.4.7"
   },
   "dependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "lazysizes": "^5.3.2"
   }
 }

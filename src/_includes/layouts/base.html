@@ -12,6 +12,19 @@
     {% endif %}
     <title>{{ pageTitle }}</title>
     <link href="{{ '/css/style.css' | url }}" rel="stylesheet">
+    <link href="https://unpkg.com/prismjs@1.30.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <style>
+      pre[class*="language-"] {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      code[class*="language-"] {
+        font-size: 0.8em;
+        display: block;
+        width: 100%;
+      }
+    </style>
   </head>
   <body class="flow-super">
 

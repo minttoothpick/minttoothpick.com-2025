@@ -1,8 +1,9 @@
 const dotenv = require("dotenv").config();
-const Image = require("@11ty/eleventy-img"); // Ensure this is correctly imported
 const path = require("path");
+const Image = require("@11ty/eleventy-img"); // Ensure this is correctly imported
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
-module.exports = (config) => {
+module.exports = (eleventyConfig) => {
 
   /* Collections
    ======================================================================== */
@@ -10,14 +11,14 @@ module.exports = (config) => {
   /**
    * Collages collection
    */
-  config.addCollection("collages", function(collectionApi) {
+  eleventyConfig.addCollection("collages", function(collectionApi) {
     return collectionApi.getFilteredByTags("collage");
   });
 
   /**
    * Art collection
    */
-  config.addCollection("art", function(collectionApi) {
+  eleventyConfig.addCollection("art", function(collectionApi) {
     return collectionApi.getFilteredByGlob("art/*.md");
   })
 
@@ -25,7 +26,7 @@ module.exports = (config) => {
    * Books with drawings
    * https://11ty.rocks/eleventyjs/collections/#collections-from-custom-data
    */
-  config.addCollection("booksWithDrawings", (collection) => {
+  eleventyConfig.addCollection("booksWithDrawings", (collection) => {
     const myBooks = collection.getAll()[0].data.books;
     const myBooksFiltered = myBooks.filter((d) => (d.drawing.includes("TRUE")));
     // Sort books by finish date
@@ -35,7 +36,7 @@ module.exports = (config) => {
   /* Shortcodes
    ======================================================================== */
 
-  config.addNunjucksAsyncShortcode("imageRow", async function(images, caption="", alts=[]) {
+  eleventyConfig.addNunjucksAsyncShortcode("imageRow", async function(images, caption="", alts=[]) {
     try {
       const imageData = await Promise.all(
         images.map(async (imagePath) => {
@@ -89,7 +90,7 @@ module.exports = (config) => {
     }
   });
 
-  config.addNunjucksAsyncShortcode("bookImage", async function(slug, alt) {
+  eleventyConfig.addNunjucksAsyncShortcode("bookImage", async function(slug, alt) {
     if (!slug) return ""; // No slug, no image
 
     let inputPath = `./src/images/books/${slug}.png`;
@@ -145,9 +146,12 @@ module.exports = (config) => {
   /* Other options
    ======================================================================== */
 
+  // Plugins
+  eleventyConfig.addPlugin(syntaxHighlight);
+
   // Set directories to pass through to the `dist` folder
-  config.addPassthroughCopy("./src/images/");
-  config.addPassthroughCopy("./src/fonts");
+  eleventyConfig.addPassthroughCopy("./src/images/");
+  eleventyConfig.addPassthroughCopy("./src/fonts");
 
   return {
     // Parse .html with Nunjucks
