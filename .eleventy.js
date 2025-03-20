@@ -35,7 +35,7 @@ module.exports = (config) => {
   /* Shortcodes
    ======================================================================== */
 
-  config.addNunjucksAsyncShortcode("imageRow", async function(images) {
+  config.addNunjucksAsyncShortcode("imageRow", async function(images, caption="") {
     try {
       const imageData = await Promise.all(images.map(async (imagePath) => {
         // Add your source images directory to the path
@@ -60,21 +60,27 @@ module.exports = (config) => {
         };
       }));
 
+      const captionHtml = caption ? `<figcaption class="text-small">${caption}</figcaption>` : "";
+
       return `
-        <figure class="image-row">
-          ${imageData
-            .map(
-              (img) => `
-              <div class="image-row-image" style="--aspect-ratio: ${img.aspectRatio}">
-                <img src="${img.src}" alt="">
-              </div>`
-            )
-            .join("")
-            .replace(/\n\s*/g, "")}
+        <figure class="flow-condensed">
+          <div class="imageRow">
+            ${imageData
+              .map(
+                (img) => `
+                <div class="imageRow__item" style="--aspect-ratio: ${img.aspectRatio}">
+                  <img src="${img.src}" alt="">
+                </div>`
+              )
+              .join("")
+              .replace(/\n\s*/g, "")
+            }
+          </div>
+          ${captionHtml}
         </figure>
       `.trim();
     } catch (error) {
-      console.error("Error processing image row:", error);
+      console.error("Error processing image row: ", error);
       return `<div class="error">Image processing failed: ${error.message}</div>`;
     }
   });
