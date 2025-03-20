@@ -38,47 +38,44 @@ module.exports = (config) => {
   config.addNunjucksAsyncShortcode("imageRow", async function(images, caption="") {
     try {
       const imageData = await Promise.all(images.map(async (imagePath) => {
-        // Add your source images directory to the path
         const fullImagePath = `src/images${imagePath}`;
 
         const metadata = await Image(fullImagePath, {
-          widths: [null], // Original size
+          widths: [300, 600, 900],
           formats: ["jpeg"],
           outputDir: "./dist/images/",
           urlPath: "/images/",
           filenameFormat: (id, src, width, format) => {
-            // Preserve directory structure
-            const pathParts = src.split("/").slice(2); // Remove "src/images" prefix
-            return `${pathParts.join("/")}`;
+            const pathParts = src.split("/").slice(2);
+            return `${pathParts.join("/")}-${width}w.${format}`;
           },
         });
 
-        const data = metadata.jpeg[0];
+        const data = metadata.jpeg;
         return {
-          src: data.url,
-          aspectRatio: data.width / data.height
+          srcset: data.map(entry => `${entry.url} ${entry.width}w`).join(", "),
+          placeholder: data[0].url,
+          aspectRatio: data[0].width / data[0].height // Use the first image for aspect ratio
         };
       }));
 
       const captionHtml = caption ? `<figcaption class="text-small">${caption}</figcaption>` : "";
 
-      return `
-        <figure class="flow-condensed">
-          <div class="imageRow">
-            ${imageData
-              .map(
-                (img) => `
-                <div class="imageRow__item" style="--aspect-ratio: ${img.aspectRatio}">
-                  <img src="${img.src}" alt="">
-                </div>`
-              )
-              .join("")
-              .replace(/\n\s*/g, "")
-            }
-          </div>
-          ${captionHtml}
-        </figure>
-      `.trim();
+      return `<figure class="flow-condensed"><div class="imageRow">${imageData
+        .map(img =>
+          `<div class="imageRow__item" style="--aspect-ratio: ${img.aspectRatio}">` +
+            `<img src="${img.placeholder}"` +
+                  `data-srcset="${img.srcset}"` +
+                  `data-sizes="auto"` +
+                  `class="lazyload"` +
+                  `alt="">` +
+          `</div>`
+        ).join("")}
+      </div>
+      ${captionHtml}
+    </figure>`
+      // .replace(/>\s+</g, '><')  // Remove whitespace between tags
+      .trim();
     } catch (error) {
       console.error("Error processing image row: ", error);
       return `<div class="error">Image processing failed: ${error.message}</div>`;
