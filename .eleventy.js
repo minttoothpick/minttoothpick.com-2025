@@ -46,8 +46,8 @@ module.exports = (config) => {
           outputDir: "./dist/images/",
           urlPath: "/images/",
           filenameFormat: (id, src, width, format) => {
-            const pathParts = src.split("/").slice(2);
-            return `${pathParts.join("/")}-${width}w.${format}`;
+            const filename = path.basename(src, path.extname(src));
+            return `${filename}-${width}w.${format}`;
           },
         });
 
