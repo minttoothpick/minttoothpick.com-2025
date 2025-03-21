@@ -27,6 +27,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 }
 ```
 
+{% fluidImageRow [
+  { src: "./src/images/collage/vigilled-wafted-flung.jpg", alt: "Greyscale figure crouching with bright orange eyes and floating orange crescents." },
+  { src: "./src/images/collage/moontuck.jpg", alt: "Description of photo 2" },
+  { src: "./src/images/collage/a-fifth-attempt-at-certainty.jpg", alt: "Description of photo 3" }
+], "Optional caption for this set of images" %}
+
 {% imageRow [
   "/collage/vigilled-wafted-flung.jpg",
   "/collage/moontuck.jpg",
