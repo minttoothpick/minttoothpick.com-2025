@@ -1,0 +1,15 @@
+/* prism.css
+   ======================================================================== */
+
+/* Just some overrides of the default PrimsJS styles */
+pre[class*="language-"] {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: var(--flow-space, 1rem); /* Override default style for flow util */
+}
+
+code[class*="language-"] {
+  font-size: 0.8em;
+  display: block;
+  width: 100%;
+}
