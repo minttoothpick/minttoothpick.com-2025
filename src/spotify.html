@@ -2,9 +2,11 @@
 layout: layouts/base
 title: My most-played tracks lately
 ---
+<div class="grid grid-5-col">
 {% for track in spotify %}
-  <div>
-    <img src="{{ track.cover }}" alt="Album cover for {{ track.album }}">
-    <p><a href="{{ track.url }}">{{ track.title }}</a> by {{ track.artist }}</p>
+  <div class="flow-condensed">
+    <img src="{{ track.cover }}" alt="Album cover for {{ track.album }}" class="card__img">
+    <p class="text-small"><a href="{{ track.url }}">{{ track.title }}</a> by {{ track.artist }}</p>
   </div>
 {% endfor %}
+</div>

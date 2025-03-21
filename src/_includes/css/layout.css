@@ -4,11 +4,38 @@
 /**
  * Container
  */
- .container {
+.container {
   margin-inline-start: auto;
   margin-inline-end: auto;
   max-inline-size: var(--container-max-inline-size);
   width: var(--container-inline-size);
+}
+
+/**
+ * Grid
+ */
+.grid {
+  display: grid;
+  gap: var(--gap);
+}
+
+/**
+ * Go from 2 to 4 to 5 columns depending on screen size
+ */
+.grid-5-col {
+  grid-template-columns: repeat(2, 1fr); /* Default: 2 columns */
+}
+
+@media (min-width: 48rem) { /* ~768px: Medium screens */
+  .grid-5-col {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 64rem) { /* ~1024px: Large screens */
+  .grid-5-col {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 /**
