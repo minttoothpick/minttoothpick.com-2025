@@ -1,0 +1,9 @@
+---
+layout: layouts/base
+---
+{% for track in spotify %}
+  <div>
+    <img src="{{ track.cover }}" alt="Album cover for {{ track.album }}">
+    <p><a href="{{ track.url }}">{{ track.title }}</a> by {{ track.artist }}</p>
+  </div>
+{% endfor %}
