@@ -9,18 +9,20 @@ module.exports = (eleventyConfig) => {
    ======================================================================== */
 
   /**
-   * Collages collection
-   */
-  eleventyConfig.addCollection("collages", function(collectionApi) {
-    return collectionApi.getFilteredByTags("collage");
-  });
-
-  /**
    * Art collection
    */
   eleventyConfig.addCollection("art", function(collectionApi) {
     return collectionApi.getFilteredByGlob("art/*.md");
-  })
+  });
+
+  /**
+   * Blog collection
+   */
+  // Returns a collection of blog posts in reverse date order
+  eleventyConfig.addCollection("blog", (collection) => {
+    // Spread syntax creates a copy of the original array
+    return [...collection.getFilteredByGlob("./src/posts/*.md")].reverse();
+  });
 
   /**
    * Books with drawings
@@ -31,6 +33,13 @@ module.exports = (eleventyConfig) => {
     const myBooksFiltered = myBooks.filter((d) => (d.drawing.includes("TRUE")));
     // Sort books by finish date
     return myBooksFiltered.sort((a, b) => (b.finish) > (a.finish) ? 1 : -1);
+  });
+
+  /**
+   * Collages collection
+   */
+  eleventyConfig.addCollection("collages", function(collectionApi) {
+    return collectionApi.getFilteredByTags("collage");
   });
 
   /* Shortcodes
@@ -107,22 +116,6 @@ module.exports = (eleventyConfig) => {
         },
       });
 
-      // Use largest jpeg as fallback
-      // let image = metadata.jpeg[metadata.jpeg.length - 1];
-
-      // return `
-      //   <img
-      //     src="${image.url}"
-      //     alt="${alt}"
-      //     width="${image.width}"
-      //     height="${image.height}"
-      //     srcset="
-      //       ${metadata.webp.map(img => `${img.url} ${img.width}w`).join(", ")}
-      //     "
-      //     sizes="(max-width: 300px) 40vw, (max-width: 500px) 30vw, (max-width: 750px)"
-      //   >
-      // `;
-
       let imageAttributes = {
         alt: alt,
         width: null,
@@ -155,12 +148,12 @@ module.exports = (eleventyConfig) => {
 
   return {
     // Parse .html with Nunjucks
-    markdownTemplateEngine: 'njk',
-    dataTemplateEngine: 'njk',
-    htmlTemplateEngine: 'njk',
+    markdownTemplateEngine: "njk",
+    dataTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
     dir: {
-      input: 'src',
-      output: 'dist',
+      input: "src",
+      output: "dist",
     },
   };
 
