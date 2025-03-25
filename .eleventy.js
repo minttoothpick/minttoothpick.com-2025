@@ -45,14 +45,14 @@ module.exports = (eleventyConfig) => {
   /* Shortcodes
    ======================================================================== */
 
-  eleventyConfig.addNunjucksAsyncShortcode("imageRow", async function(images, caption="", alts=[]) {
+  eleventyConfig.addNunjucksAsyncShortcode("imageRow", async function(images, caption = "") {
     try {
       const imageData = await Promise.all(
-        images.map(async (imagePath) => {
-          const fullImagePath = `src/images${imagePath}`;
+        images.map(async (image) => {
+          const fullImagePath = `src/images${image.src}`;
 
           const metadata = await Image(fullImagePath, {
-            widths: [300, 600, 900],
+            widths: [300, 600, 900, 1200],
             formats: ["jpeg"],
             outputDir: "./dist/images/",
             urlPath: "/images/",
@@ -63,14 +63,15 @@ module.exports = (eleventyConfig) => {
           });
 
           const data = metadata.jpeg;
+          const largestImage = data[data.length - 1];
           return {
             srcset: data.map(entry => `${entry.url} ${entry.width}w`).join(", "),
             placeholder: data[0].url,
-            // Use largest image to calculate ratio more accurately
-            aspectRatio: data[data.length - 1].width / data[data.length - 1].height
+            aspectRatio: largestImage.width / largestImage.height,
+            alt: image.alt || ""
           };
         })
-      ); // imageData
+      );
 
       const captionHtml = caption ? `<figcaption class="text-small">${caption}</figcaption>` : "";
 
@@ -78,7 +79,7 @@ module.exports = (eleventyConfig) => {
         <div class="imageRow">
           ${imageData
             .map(
-              (img, index) =>
+              (img) =>
                 `<div class="imageRow__item" style="--aspect-ratio: ${img.aspectRatio}">
                   <img src="${img.placeholder}"
                        data-srcset="${img.srcset}"
@@ -86,7 +87,7 @@ module.exports = (eleventyConfig) => {
                        decoding="async"
                        class="lazyload"
                        loading="lazy"
-                       alt="${alts[index] || ""}">
+                       alt="${img.alt}">
                 </div>`
             )
             .join("")}
@@ -147,7 +148,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("./src/fonts");
 
   return {
-    // Parse .html with Nunjucks
     markdownTemplateEngine: "njk",
     dataTemplateEngine: "njk",
     htmlTemplateEngine: "njk",

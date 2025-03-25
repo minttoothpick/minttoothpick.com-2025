@@ -27,30 +27,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 }
 ```
 
-{% fluidImageRow [
-  { src: "./src/images/collage/vigilled-wafted-flung.jpg", alt: "Greyscale figure crouching with bright orange eyes and floating orange crescents." },
-  { src: "./src/images/collage/moontuck.jpg", alt: "Description of photo 2" },
-  { src: "./src/images/collage/a-fifth-attempt-at-certainty.jpg", alt: "Description of photo 3" }
-], "Optional caption for this set of images" %}
-
 {% imageRow [
-  "/collage/vigilled-wafted-flung.jpg",
-  "/collage/moontuck.jpg",
-  "/collage/a-fifth-attempt-at-certainty.jpg"
-], "Hello caption? Lorem ipsum odor amet, consectetuer adipiscing elit. Sit mollis primis taciti, mi sodales ornare.", [
-  "Collage of a greyscale human-like figure crouching; its eyes are bright orange and crescents of the same color float down toward its feet."
-] %}
+  { src: "/collage/vigilled-wafted-flung.jpg", alt: "Greyscale figure crouching with bright orange eyes and floating orange crescents." },
+  { src: "/collage/moontuck.jpg", alt: "Description of photo 2" },
+  { src: "/collage/a-fifth-attempt-at-certainty.jpg", alt: "Description of photo 3" }
+], "Optional caption for this set of images" %}
 
 Lorem ipsum odor amet, consectetuer adipiscing elit. Sit mollis primis taciti, mi sodales ornare. In donec leo natoque libero facilisis euismod habitasse. Ac sagittis mauris dui nam vehicula leo suspendisse. Cras nunc sem adipiscing luctus viverra luctus fames. Donec aenean montes malesuada enim sociosqu metus. Facilisi feugiat maecenas lacus risus donec.
 
 Here’s another **prose-width** paragraph after the image.
-
-<div class="full-width">
-{% imageRow [
-  "/collage/vigilled-wafted-flung.jpg",
-  "/collage/moontuck.jpg",
-  "/collage/a-fifth-attempt-at-certainty.jpg"
-] %}
-</div>
 
 More prose text to wrap up the article.
