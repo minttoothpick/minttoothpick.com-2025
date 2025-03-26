@@ -1,7 +1,11 @@
 {# If parent template/content file doesn't set a custom title, use page title #}
-{% if not pageHeaderTitle %}{% set pageHeaderTitle = title | safe %}{% endif %}
-{% if not pageHeaderClass %}{% set pageHeaderClass = "flow" %}{% endif %}
+{% set pageHeaderTitle = pageHeaderTitle | default(title | safe) %}
 
-<header class="prose-width {{ pageHeaderClass }}"><!-- page-header -->
+{# Allow overriding/adding classes from content frontmatter #}
+{% set pageHeaderClass = pageHeaderClass | default("flow") %}
+
+{# TODO: Fix prose-width styles... super wide b/c of header font size #}
+
+<header class="prose-width {{ pageHeaderClass }}">
   <h1>{{ pageHeaderTitle | safe }}</h1>
 </header>
