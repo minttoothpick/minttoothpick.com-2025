@@ -32,13 +32,8 @@
     {# The tabindex value allows the skipnav link to focus on this element #}
     <main tabindex="-1" id="main-content">
 
-      <article class="container flow-expanded">
+      {% block content %}{{ content | safe }}{% endblock content %}
 
-        {% include "partials/page-header.html" %}
-
-        {% block content %}{{ content | safe }}{% endblock content %}
-
-      </article>
     </main>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>

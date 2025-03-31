@@ -19,6 +19,14 @@
   gap: var(--gap);
 }
 
+.grid--1fr2fr {
+  grid-template-columns: 1fr 2fr;
+}
+
+.grid--singleCollage {
+  max-inline-size: calc(var(--container-inline-size)/2);
+}
+
 /**
  * Go from 2 to 4 to 5 columns depending on screen size
  */

@@ -1,7 +1,33 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-  <img src="{{ image }}" alt="{{ title }}">
-  <h1>{{ title }}</h1>
+<article class="container">
+  <div class="grid grid--1fr2fr">
+
+    {# {% include "partials/page-header.html" %} #}
+    <header class="flow">
+      <h1>{{ title | safe }}</h1>
+      {% if label %}<p>{{ label }}</p>{% endif %}
+    </header>
+
+    <figure>
+      <img src="{{ image }}" alt="{{ title }}">
+    </figure>
+
+  </div>
   {{ content | safe }}
+</article>
 {% endblock %}
+
+{#
+<div class="grid grid--singleCollage">
+  <figure>
+    <img src="{{ image }}" alt="{{ title }}">
+    {% if label %}
+      <figcaption class="text-small">
+        <p>{{ label }}</p>
+      </figcaption>
+    {% endif %}
+  </figure>
+</div>
+#}
