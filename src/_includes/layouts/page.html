@@ -1,8 +1,13 @@
-{% extends "layouts/base.html" %}
-
+---
+layout: "layouts/base.html"
+---
 {% block content %}
 <article class="container">
-  {% include "partials/page-header.html" %}
+  {# {% include "partials/page-header.html" %} #}
+  <header class="flow">
+    <h1>{{ title | safe }}</h1>
+  </header>
+
   {{ content | safe }}
 </article>
 {% endblock content %}

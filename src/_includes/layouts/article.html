@@ -1,9 +1,12 @@
-{% extends "layouts/page.html" %}
-
+---
+layout: "layouts/base.html"
+---
 {% block content %}
-  <div class="flow-expanded">
-    <div class="prose-width flow">
-      {{ content | safe }}
-    </div>
+<article class="container flow">
+  {% include "partials/page-header.html" %}
+
+  <div class="prose-width flow">{# TODO: prismjs is overriding block margins for .flow? #}
+    {{ content | safe }}
   </div>
+</article>
 {% endblock content %}

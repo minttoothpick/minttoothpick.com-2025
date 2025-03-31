@@ -1,5 +1,5 @@
 ---
-layout: layouts/prose.html
+layout: layouts/article.html
 pageHeaderTitle: "Hey, y’all — welcome to my site!"
 ---
 I hope you find something delightful here. ✌️
