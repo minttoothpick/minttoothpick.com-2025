@@ -1,7 +1,6 @@
 ---
 title: "Find your spark"
 date: 2024-06-21
-image: "/images/collage/find-your-spark-01.jpg"
 images:
   - src: "/images/collage/find-your-spark-01.jpg"
   - src: "/images/collage/find-your-spark-02.jpg"
