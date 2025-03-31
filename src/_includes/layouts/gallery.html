@@ -3,7 +3,7 @@
 {% block content %}
 <article class="container flow">
   {% include "partials/page-header.html" %}
-  <div class="gallery">
+  <div class="grid gallery-flex full-bleed"><!-- full bleed doesn't quite work b/c figcaption override -->
     {% set items = collections[collectionName] %}
     {% for item in items | reverse %}
       <figure class="gallery-item">

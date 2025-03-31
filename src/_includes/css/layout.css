@@ -66,6 +66,12 @@
   margin-inline-end: auto;
 }
 
+/* Undo centering when figure is a direct descendent, like in `gallery.html` */
+.full-bleed > figure {
+  margin-inline-start: unset;
+  margin-inline-end: unset;
+}
+
 /* Align caption text w/ prose */
 .full-bleed > figcaption {
   max-inline-size: var(--text-measure);
@@ -139,23 +145,93 @@
 }
 
 /**
- * Gallery
+ * Masonry
  */
-.gallery {
+.pseudo-masonry {
+  --masonry-columns: 2;
+}
+
+@media (min-width: 768px) {
+  .pseudo-masonry {
+    --masonry-columns: 3;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pseudo-masonry {
+    --masonry-columns: 4;
+  }
+}
+
+.pseudo-masonry {
+  column-count: var(--masonry-columns);
+  column-gap: var(--gap);
+}
+
+.pseudo-masonry img {
+  width: 100%;
+}
+
+.pseudo-masonry > * {
+  margin-bottom: var(--gap);
+  break-inside: avoid;
+}
+
+/**
+ * Gallery (grid)
+ */
+.gallery-grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 5px; /* Base unit for row calculations */
+  grid-auto-flow: dense; /* Fills gaps automatically */
+}
+
+@supports (grid-template-rows: masonry) {
+  .gallery-grid {
+    grid-template-rows: masonry;
+    grid-auto-rows: unset;
+  }
+}
+
+.gallery-grid figure {
+  margin: 0; /* Remove default figure margins */
+  height: 100%; /* Fill grid cell */
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  flex: 1; /* Makes image expand to fill available space */
+  object-fit: cover;
+  grid-row-end: span var(--span, 20); /* Larger base span */
+}
+
+/**
+ * Gallery (flex)
+ */
+.gallery-flex {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: flex-start;
+  align-items: end;
 }
 
-.gallery-item {
+.gallery-flex .gallery-item {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-block-end: var(--s0);
 }
 
-.gallery-item img {
-  height: 400px; /* Set a uniform height */
-  width: auto; /* Scale width automatically to maintain aspect ratio */
+/* .gallery-flex .gallery-item img {
+  height: 400px;
+  width: auto;
+} */
+
+.gallery-flex .gallery-item img {
+  height: auto;
+  width: 300px;
 }
