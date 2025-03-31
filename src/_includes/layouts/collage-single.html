@@ -2,7 +2,9 @@
 
 {% block content %}
 <article class="container">
-  <div class="grid-single-collage" style="--grid-rows: {{ images | length }}">
+  {# Below not necessary... grid-row span will automatically add rows #}
+  {# <div class="grid-single-collage" style="--grid-rows: {{ images | length + 1 }}"> #}
+  <div class="grid-single-collage" style="--grid-rows: {{ images | length + 1 }}">
 
     {##
      # What's going on here?
@@ -23,7 +25,7 @@
     #}
 
     {# {% include "partials/page-header.html" %} #}
-    <header class="flow">
+    <header class="flow" style="margin-block-end: var(--s2);">
       <h1>{{ title | safe }}</h1>
       {% if label %}<p>{{ label }}</p>{% endif %}
     </header>
@@ -31,7 +33,7 @@
     {% for image in images %}
       {# Treat first image as main #}
       {% if loop.index == 1 %}
-        <figure style="grid-row: span {{ images | length }};">
+        <figure style="grid-row: span {{ images | length + 1 }};">
           <img src="{{ image.src }}" alt="{{ image.title }}">
         </figure>
       {% elif image.layout == "headerLeft" %}
