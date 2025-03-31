@@ -21,10 +21,21 @@
 
 .grid--1fr2fr {
   grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(var(--grid-rows, 1), auto);
 }
 
 .grid--singleCollage {
   max-inline-size: calc(var(--container-inline-size)/2);
+}
+
+/**
+ * Single collage grid
+ */
+.grid-single-collage {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(var(--grid-rows, 1), auto);
 }
 
 /**

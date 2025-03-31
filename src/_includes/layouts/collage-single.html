@@ -2,7 +2,25 @@
 
 {% block content %}
 <article class="container">
-  <div class="grid grid--1fr2fr">
+  <div class="grid-single-collage" style="--grid-rows: {{ images | length }}">
+
+    {##
+     # What's going on here?
+     #
+     # Currently handling layout w/ full size main image on right, and
+     # smaller images display on left under title text.
+     # Main image spans as many rows as there are images, but might
+     # need to change that...
+     #}
+
+    {#
+    {% set headerLeftCount = 0 %}
+    {% for image in images %}
+    {% if image.layout == "headerLeft" %}
+        {% set headerLeftCount = headerLeftCount + 1 %}
+    {% endif %}
+    {% endfor %}
+    #}
 
     {# {% include "partials/page-header.html" %} #}
     <header class="flow">
@@ -10,12 +28,20 @@
       {% if label %}<p>{{ label }}</p>{% endif %}
     </header>
 
-    <figure>
-      <img src="{{ image }}" alt="{{ title }}">
-    </figure>
+    {% for image in images %}
+      {# Treat first image as main #}
+      {% if loop.index == 1 %}
+        <figure style="grid-row: span {{ images | length }};">
+          <img src="{{ image.src }}" alt="{{ image.title }}">
+        </figure>
+      {% elif image.layout == "headerLeft" %}
+        <figure>
+          <img src="{{ image.src }}" alt="{{ image.title }}">
+        </figure>
+      {% endif %}
+    {% endfor %}
 
   </div>
-  {{ content | safe }}
 </article>
 {% endblock %}
 
