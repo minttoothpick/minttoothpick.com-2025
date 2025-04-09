@@ -3,10 +3,10 @@
 {% block content %}
 <article class="container flow">
   {% include "partials/page-header.html" %}
-  <div class="grid gallery-flex full-bleed"><!-- full bleed doesn't quite work b/c figcaption override -->
+  <div class="gallery-flex flow full-bleed"><!-- full bleed doesn't quite work b/c figcaption override -->
     {% set items = collections[collectionName] %}
     {% for item in items | reverse %}
-      <figure class="gallery-item">
+      <figure>
         <a href="{{ item.url }}">
           <img src="{{ item.data.images[0].src }}" alt="">
         </a>

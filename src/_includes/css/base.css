@@ -25,6 +25,13 @@ body {
   }
 }
 
+@media (min-width: 900px) {
+  body {
+    padding-left: var(--s4);
+    padding-right: var(--s4);
+  }
+}
+
 /* Make images easier to work with */
 img,
 picture {
