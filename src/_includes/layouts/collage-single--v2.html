@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<article class="container flow">
+  <div class="grid grid--2col">
+    <header class="flow" style="margin-block-end: var(--s2);">
+      <h1>{{ title | safe }}</h1>
+    </header>
+
+    <div class="flow">
+      {% if label %}<p>{{ label }}</p>{% endif %}
+      {{ content | safe }}
+    </div>
+  </div>
+
+  <div class="grid grid--12col flow">
+    {% for image in images %}
+    <figure style="grid-column: {{ image.col | default('1 / span 7') }}; grid-row: {{ image.row }};">
+      <img src="{{ image.src }}" alt="{{ image.title }}">
+    </figure>
+    {% endfor %}
+  </div>
+
+</article>
+{% endblock %}
+
+{#
+<div class="grid grid--singleCollage">
+  <figure>
+    <img src="{{ image }}" alt="{{ title }}">
+    {% if label %}
+      <figcaption class="text-small">
+        <p>{{ label }}</p>
+      </figcaption>
+    {% endif %}
+  </figure>
+</div>
+#}

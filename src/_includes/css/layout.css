@@ -19,6 +19,37 @@
   gap: var(--gap);
 }
 
+.grid--2col {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 960px) {
+  .grid--2col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.grid--12col {
+  display: block;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 960px) {
+  .grid--12col {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .grid--12col > * {
+    --flow-space: 0;
+  }
+}
+
+.grid--1fr1fr {
+  grid-template-columns: 1fr 1fr;
+}
+
 .grid--1fr2fr {
   grid-template-columns: 1fr 2fr;
   grid-template-rows: repeat(var(--grid-rows, 1), auto);
