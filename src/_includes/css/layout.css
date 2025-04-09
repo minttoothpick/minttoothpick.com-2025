@@ -7,7 +7,10 @@
 .container {
   margin-inline-start: auto;
   margin-inline-end: auto;
+  margin-left: auto;
+  margin-right: auto;
   max-inline-size: var(--container-max-inline-size);
+  max-width: var(--container-max-inline-size);
   width: var(--container-inline-size);
 }
 
@@ -57,6 +60,7 @@
 
 .grid--singleCollage {
   max-inline-size: calc(var(--container-inline-size)/2);
+  max-width: calc(var(--container-inline-size)/2);
 }
 
 /**
@@ -93,36 +97,48 @@
  */
 .prose-width > * {
   max-inline-size: var(--text-measure);
+  max-width: var(--text-measure);
   word-break: break-word;
 }
 
 .full-bleed {
   max-inline-size: var(--container-max-inline-size);
+  max-width: var(--container-max-inline-size);
   margin-inline-start: calc(var(--s2) * -1);
   margin-inline-end: calc(var(--s2) * -1);
+  margin-left: calc(var(--s2) * -1);
+  margin-right: calc(var(--s2) * -1);
 }
 
 /* Center images/content when not wide enough to fill screen */
 .full-bleed > :not(figcaption) {
   margin-inline-start: auto;
   margin-inline-end: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Undo centering when figure is a direct descendent, like in `gallery.html` */
 .full-bleed > figure {
   margin-inline-start: unset;
   margin-inline-end: unset;
+  margin-left: unset;
+  margin-right: unset;
 }
 
 /* Align caption text w/ prose */
 .full-bleed > figcaption {
   max-inline-size: var(--text-measure);
+  max-width: var(--text-measure);
   margin-inline-start: var(--s2);
   margin-inline-end: var(--s2);
+  margin-left: var(--s2);
+  margin-right: var(--s2);
 }
 
 .full-width {
   max-inline-size: var(--container-max-inline-size);
+  max-width: var(--container-max-inline-size);
 }
 
 .imageRow {
@@ -179,10 +195,13 @@
 
 @media (min-width: 440px) {
   .align-pull-end {
-      float: inline-end;
-      margin-inline-start: var(--gap);
-      margin-inline-end: calc(var(--gap) * -1);
-      width: 33%;
+    float: inline-end;
+    float: left;
+    margin-inline-start: var(--gap);
+    margin-inline-end: calc(var(--gap) * -1);
+    margin-left: var(--gap);
+    margin-right: calc(var(--gap) * -1);
+    width: 33%;
   }
 }
 

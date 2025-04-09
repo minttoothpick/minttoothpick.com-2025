@@ -8,6 +8,7 @@
  */
  .flow > * + * {
   margin-block-start: var(--flow-space, 1em);
+  margin-top: var(--flow-space, 1em);
 }
 
 /**
@@ -16,14 +17,17 @@
  */
 .flow-condensed > * + * {
   margin-block-start: var(--flow-condensed);
+  margin-top: var(--flow-condensed);
 }
 
 .flow-expanded > * + * {
   margin-block-start: var(--flow-expanded);
+  margin-top: var(--flow-expanded);
 }
 
 .flow-super > * + * {
   margin-block-start: var(--flow-super);
+  margin-top: var(--flow-super);
 }
 
 /**
@@ -60,4 +64,5 @@
 /* .post ol > * + *,
 .post ul > * + * { */
   margin-block-start: var(--s0);
+  margin-top: var(--s0);
 }
