@@ -27,10 +27,26 @@
   width: 1px;
 }
 
+figcaption,
 .text-small {
   color: var(--color-text-muted);
   font-size: var(--font-size-small);
   line-height: 1.5;
+}
+
+.prose-width > pre,
+.u-pull-margin-inline {
+  margin-inline: -1em;
+  margin-left: -1em;
+  margin-right: -1em;
+  max-inline-size: calc(var(--text-measure) + 2em);
+  max-width: calc(var(--text-measure) + 2em);
+}
+
+/* Realign text to prose-width column */
+.u-pull-margin-inline figcaption {
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .no-underline {
