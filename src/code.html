@@ -1,0 +1,48 @@
+---
+layout: layouts/article.html
+title: Code
+projects:
+  - title: "html-to-markdown-yay-lets-go"
+    desc: "Enter a URL (or paste in HTML) to extract the article content from a webpage and convert it to Markdown."
+    links:
+      - title: "See it live on Glitch"
+        url: https://html-to-markdown-yay-lets-go.glitch.me
+      - title: "View code on GitHub"
+        url: https://github.com/minttoothpick/html-to-markdown-yay-lets-go
+---
+<p>Little experiments and tools I’ve made for my own learning process.</p>
+<style>
+:root {
+  --inset-dark: #35524A;
+  --inset-medium-dark: #627C85;
+  --inset-medium-light: #779CAB;
+  --inset-light: #A2E8DD;
+  --border-width: 10px;
+}
+
+.border-inset {
+  border-top: var(--border-width) solid var(--inset-dark);
+  border-left: var(--border-width) solid var(--inset-medium-dark);
+  border-right: var(--border-width) solid var(--inset-medium-light);
+  border-bottom: var(--border-width) solid var(--inset-light);
+  background: #f8f9fa;
+  border-style: ridge;
+}
+
+div.border-inset {
+  padding: 1em;
+}
+</style>
+<div class="grid grid--2col full-width">
+  {% for project in projects %}
+  <div class="border-inset flow-condensed" href="">
+    <h2>{{ project.title }}</h2>
+    <p class="text-small">{{ project.desc }}</p>
+    <div style="display: flex; gap: var(--gap);">
+      {% for link in project.links %}
+      <a class="text-small" href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
