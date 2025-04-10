@@ -6,7 +6,7 @@ I hope you find something delightful here. ✌️
 
 I’m still working on things around here. So for starters, here’s one of those Geocities-era “under construction” gifs that I made with chalk pastels.
 
-<figure>
+<figure class="u-pull-margin-inline">
   <iframe
     src="https://player.vimeo.com/video/543968889?autoplay=1&loop=1&muted=1&background=1"
     loading="lazy"
