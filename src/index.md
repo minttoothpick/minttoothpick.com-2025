@@ -4,7 +4,7 @@ pageHeaderTitle: "Hey, y’all — welcome to my site!"
 ---
 I hope you find something delightful here. ✌️
 
-Also, I’m still working on things around here. So for starters, here’s one of those Geocities-era “under construction” gifs that I made with chalk pastels.
+I’m still working on things around here. So for starters, here’s one of those Geocities-era “under construction” gifs that I made with chalk pastels.
 
 <figure>
   <iframe
