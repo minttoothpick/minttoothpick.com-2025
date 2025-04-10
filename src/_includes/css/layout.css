@@ -100,6 +100,15 @@
   word-break: break-word;
 }
 
+.prose-width > pre,
+.u-pull-margin-inline {
+  margin-inline: -1em;
+  margin-left: -1em;
+  margin-right: -1em;
+  max-inline-size: calc(var(--text-measure) + 2em);
+  max-width: calc(var(--text-measure) + 2em);
+}
+
 @media (min-width: 900px) {
   .full-bleed {
     max-inline-size: var(--container-max-inline-size);
