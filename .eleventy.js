@@ -137,6 +137,14 @@ module.exports = (eleventyConfig) => {
     }
   });
 
+  /* Filters
+   ======================================================================== */
+
+  /* Replace spaces with `&nbsp;` */
+  eleventyConfig.addFilter("nbsp", function(str) {
+    return str.replace(/ /g, "&nbsp;");
+  });
+
   /* Other options
    ======================================================================== */
 
