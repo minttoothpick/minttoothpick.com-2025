@@ -4,7 +4,7 @@ pageHeaderTitle: "Hey, y’all — welcome to my site!"
 ---
 I hope you find something delightful here. ✌️
 
-I’m still working on things around here. So for starters, here’s one of those Geocities-era “under construction” gifs that I made with chalk pastels.
+I’m still working on this thing, so for starters, here’s one of those Geocities-era “under construction” gifs that I made with chalk pastels.
 
 <figure class="u-pull-margin-inline">
   <iframe
@@ -16,7 +16,7 @@ I’m still working on things around here. So for starters, here’s one of thos
     style="aspect-ratio: 1 / 1;"
   ></iframe>
   <figcaption>
-    <p><em>Under construction</em>. 2021. Digital animation from ten chalk pastel drawings. 2000 px × 2000 px.</p>
+    <p><em>Under construction</em>. 2021. Animation from ten chalk pastel drawings. {{ "2000 px × 2000 px." | nbsp | safe }}</p>
   </figcaption>
 </figure>
 
