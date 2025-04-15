@@ -30,7 +30,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 {% imageRow [
   { src: "/collage/vigilled-wafted-flung.jpg", alt: "Greyscale figure crouching with bright orange eyes and floating orange crescents." },
   { src: "/collage/moontuck.jpg", alt: "Description of photo 2" },
-  { src: "/collage/a-fifth-attempt-at-certainty.jpg", alt: "Description of photo 3" }
+  { src: "/collage/2021_a-fifth-attempt-at-certainty.jpg", alt: "Description of photo 3" }
 ], "Optional caption for this set of images" %}
 
 Lorem ipsum odor amet, consectetuer adipiscing elit. Sit mollis primis taciti, mi sodales ornare. In donec leo natoque libero facilisis euismod habitasse. Ac sagittis mauris dui nam vehicula leo suspendisse. Cras nunc sem adipiscing luctus viverra luctus fames. Donec aenean montes malesuada enim sociosqu metus. Facilisi feugiat maecenas lacus risus donec.

@@ -6,6 +6,7 @@
   <div class="gallery-flex flow full-bleed"><!-- full bleed doesn't quite work b/c figcaption override -->
     {% set items = collections[collectionName] %}
     {% for item in items | reverse %}
+      {% if item.data.published !== false %}
       <figure>
         <a href="{{ item.url }}">
           <img src="{{ item.data.images[0].src }}" alt="">
@@ -16,6 +17,7 @@
         </figcaption>
         #}
       </figure>
+      {% endif %}
     {% endfor %}
   </div>
 </article>

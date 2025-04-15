@@ -17,6 +17,11 @@
     {% for image in images %}
     <figure style="grid-column: {{ image.col | default('1 / span 7') }}; grid-row: {{ image.row }};">
       <img src="{{ image.src }}" alt="{{ image.title }}">
+      {% if image.label %}
+      <figcaption>
+        <p>{{ image.label | safe }}</p>
+      </figcaption>
+      {% endif %}
     </figure>
     {% endfor %}
   </div>
