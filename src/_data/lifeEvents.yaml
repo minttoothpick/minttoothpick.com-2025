@@ -1,0 +1,10 @@
+"1985-02-11":
+  - name: "I am born"
+    icon: "👶"
+    desc: "In Orlando, Florida, USA."
+    category: "self"
+
+"2014-08-13":
+  - name: "My nephew is born"
+    icon: "👶"
+    category: "family"

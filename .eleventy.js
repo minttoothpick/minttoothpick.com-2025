@@ -1,7 +1,8 @@
 const dotenv = require("dotenv").config();
-const path = require("path");
 const Image = require("@11ty/eleventy-img"); // Ensure this is correctly imported
+const path = require("path");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const yaml = require("js-yaml");
 
 module.exports = (eleventyConfig) => {
 
@@ -145,11 +146,33 @@ module.exports = (eleventyConfig) => {
     return str.replace(/ /g, "&nbsp;");
   });
 
+  eleventyConfig.addFilter("range", (start, end) => {
+    return Array.from({ length: end - start + 1 }, (v, k) => k + start);
+  });
+
+  /**
+    * Pad numbers with leading zeros
+    *
+    * https://gist.github.com/endel/321925f6cafa25bbfbde
+    */
+    eleventyConfig.addFilter("padZeros", (myString, zeros) => {
+      var s = String(myString);
+      while (s.length < (zeros || 2)) { s = "0" + s; }
+      return s;
+    });
+
   /* Other options
    ======================================================================== */
 
   // Plugins
   eleventyConfig.addPlugin(syntaxHighlight);
+
+  /**
+   * Add YAML as custom data file format
+   *
+   * https://www.11ty.dev/docs/data-custom/
+   */
+  eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
 
   // Set directories to pass through to the `dist` folder
   eleventyConfig.addPassthroughCopy("./src/images/");
