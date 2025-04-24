@@ -18,6 +18,10 @@ module.exports = function(data) {
 
   const startDate = dayjs(startDateStr);
   const endDate = dayjs(`${endYear}-01-01`);
+  const today = dayjs();
+
+  // Calculate which week is the current one
+  const currentWeekIndex = today.diff(startDate.startOf("week"), "week");
 
   // Create an array of weeks between start and end date
   const weeks = [];
@@ -31,7 +35,8 @@ module.exports = function(data) {
       weekStart: weekStart.format("YYYY-MM-DD"),
       weekEnd: weekEnd.format("YYYY-MM-DD"),
       index: i,
-      events: []
+      events: [],
+      isPast: i <= currentWeekIndex,
     });
     current = weekEnd;
     i++;

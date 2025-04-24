@@ -20,7 +20,7 @@ end_year: 2086
       {% endfor %}
     {% endif %}
     <div
-      class="week-box"
+      class="week-box{% if week.isPast %} past{% endif %}"
       data-tippy-content="{{ tooltip | escape }}"
       tabindex="0"
     >
@@ -53,6 +53,10 @@ end_year: 2086
   justify-content: center;
   font-size: 12px;
   cursor: pointer;
+}
+
+.week-box.past {
+  background-color: #dbeafe; /* light blue */
 }
 
 .week-box:hover {
