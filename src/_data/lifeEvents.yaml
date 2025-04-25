@@ -1,31 +1,37 @@
 "1985-02-11":
-  - name: "I am born"
-    icon: "👶"
-    desc: "In Orlando, Florida, USA."
-    category: "self"
+  - name: I am born
+    icon: 👶
+    desc: In Orlando, Florida, USA.
+    category: self
 
 "2014-08-13":
-  - name: "My nephew is born"
-    icon: "👶"
-    category: "family"
+  - name: My nephew is born
+    icon: 👶
+    category: family
 
 "2061-09-11":
-  - name: "Maybe I will die"
-    icon: "🪦"
-    desc: "According to SSA actuarial table."
-    category: "self"
+  - name: Maybe I will die (according to US SSA)
+    icon: 🪦
+    category: self
 
 "2021-04-02":
-  - name: "GE is born"
-    icon: "🤎"
-    category: "family"
+  - name: GE is born
+    icon: 🤎
+    category: family
 
 "2024-01-06":
-  - name: "GN is born"
-    icon: "🤎"
-    category: "family"
+  - name: GN is born
+    icon: 🤎
+    category: family
 
 timespans:
+  - name: Living in Orlando, FL
+    icon: 🏡
+    hide_from_grid: true
+    category: living
+    start: 1985-02-11
+    end: 2006-10-12
+
   - name: Living in North Carolina
     icon: 🏡
     category: living

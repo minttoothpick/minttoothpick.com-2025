@@ -46,7 +46,7 @@ end_year: 2086
               data-tippy-content="{{ tooltip | safe }}"
             >
               {% for event in week.events %}
-                {{ event.icon }}
+                {% if not event.hide_from_grid %}{{ event.icon }}{% endif %}
               {% endfor %}
             </div>
           {% endif %}

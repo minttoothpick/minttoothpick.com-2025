@@ -27,7 +27,8 @@ module.exports = function(data) {
       icon: span.icon,
       category: span.category || "",
       isTimespanStart: true,
-      timespan: span
+      timespan: span,
+      hide_from_grid: !!span.hide_from_grid,
     });
   }
 
