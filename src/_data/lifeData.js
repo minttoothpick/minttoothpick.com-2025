@@ -23,7 +23,7 @@ module.exports = function(data) {
   for (const span of timespans) {
     if (!lifeEvents[span.start]) lifeEvents[span.start] = [];
     lifeEvents[span.start].push({
-      name: span.name + " begins",   // or just span.name
+      name: span.name,
       icon: span.icon,
       category: span.category || "",
       isTimespanStart: true,
@@ -105,8 +105,11 @@ module.exports = function(data) {
     week.timespans = timespans.filter(span => {
       const spanStart = dayjs(span.start);
       const spanEnd = span.end ? dayjs(span.end) : dayjs(); // open-ended spans end today
-      // If week overlaps with timespan
-      return weekEnd.isAfter(spanStart) && weekStart.isBefore(spanEnd.add(1, 'day'));
+
+      // If week overlaps with timespan, but is NOT the week containing the start date
+      const overlaps = weekEnd.isAfter(spanStart) && weekStart.isBefore(spanEnd.add(1, 'day'));
+      const isStartWeek = weekStart.isSame(spanStart.startOf('week'));
+      return overlaps && !isStartWeek;
     });
   }
 

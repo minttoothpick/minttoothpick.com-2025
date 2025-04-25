@@ -26,14 +26,20 @@
     category: "family"
 
 timespans:
-  - name: Lived in North Carolina
+  - name: Living in North Carolina
     icon: 🏡
     category: living
     start: 2006-10-20
     end: 2024-08-10
 
-  - name: Worked at Acme Corp
+  - name: Working at SRS
     icon: 💼
     category: job
-    start: 2010-09-01
-    end: 2015-03-31
+    start: 2015-11-25
+    end: 2024-05-19
+
+  - name: Working at NRS & FPL
+    icon: 💼
+    category: job
+    start: 2024-05-27
+    end: 2025-09-30
