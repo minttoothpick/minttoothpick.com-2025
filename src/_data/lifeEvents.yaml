@@ -14,3 +14,13 @@
     icon: "🪦"
     desc: "According to SSA actuarial table."
     category: "self"
+
+"2021-04-02":
+  - name: "GE is born"
+    icon: "🤎"
+    category: "family"
+
+"2024-01-06":
+  - name: "GN is born"
+    icon: "🤎"
+    category: "family"
