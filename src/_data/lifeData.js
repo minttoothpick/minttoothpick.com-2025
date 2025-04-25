@@ -13,6 +13,12 @@ function loadLifeEvents() {
 
 module.exports = function(data) {
   const lifeEvents = loadLifeEvents();
+
+  // Load timespans separately
+  const timespans = lifeEvents.timespans || [];
+  // Remove timespans from main events
+  delete lifeEvents.timespans;
+
   const startDateStr = data.start_date || "1985-02-11";
   const endYear = data.end_year || 2086;
 
@@ -73,13 +79,23 @@ module.exports = function(data) {
     }
   }
 
-  // For each week, find events that fall within that week
+  // For each week, find events and timespans that fall within that week
   for (const week of weeks) {
     const weekStart = dayjs(week.weekStart);
     const weekEnd = dayjs(week.weekEnd);
+
+    // Assign events to weeks
     week.events = allEvents.filter(event =>
       event.dateObj.isSameOrAfter(weekStart) && event.dateObj.isBefore(weekEnd)
     );
+
+    // Assign timespan items to weeks
+    week.timespans = timespans.filter(span => {
+      const spanStart = dayjs(span.start);
+      const spanEnd = span.end ? dayjs(span.end) : dayjs(); // open-ended spans end today
+      // If week overlaps with timespan
+      return weekEnd.isAfter(spanStart) && weekStart.isBefore(spanEnd.add(1, 'day'));
+    });
   }
 
   return weeks;

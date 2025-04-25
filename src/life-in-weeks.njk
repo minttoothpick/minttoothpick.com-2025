@@ -22,11 +22,22 @@ end_year: 2086
         {% for weekIndex in range(0, weeksPerRow) %}
           {% set week = lifeData[yearIndex * weeksPerRow + weekIndex] %}
           {% if week %}
+
+            {# Set tooltips #}
             {% set tooltip = "Week " ~ (week.index + 1) ~ " / " ~ week.weekStart %}
+
             {% if week.events.length %}
               {% set tooltip = tooltip + "<br>" %}
               {% for event in week.events %}
                 {% set tooltip = tooltip + event.icon + " " + event.name %}
+                {% if not loop.last %}{% set tooltip = tooltip + "<br>" %}{% endif %}
+              {% endfor %}
+            {% endif %}
+
+            {% if week.timespans.length %}
+              {% set tooltip = tooltip + "<br>" %}
+              {% for span in week.timespans %}
+                {% set tooltip = tooltip + span.icon + " " + span.name %}
                 {% if not loop.last %}{% set tooltip = tooltip + "<br>" %}{% endif %}
               {% endfor %}
             {% endif %}

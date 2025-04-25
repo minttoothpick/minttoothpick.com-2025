@@ -24,3 +24,16 @@
   - name: "GN is born"
     icon: "🤎"
     category: "family"
+
+timespans:
+  - name: Lived in North Carolina
+    icon: 🏡
+    category: living
+    start: 2006-10-20
+    end: 2024-08-10
+
+  - name: Worked at Acme Corp
+    icon: 💼
+    category: job
+    start: 2010-09-01
+    end: 2015-03-31
