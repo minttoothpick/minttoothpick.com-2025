@@ -8,3 +8,9 @@
   - name: "My nephew is born"
     icon: "👶"
     category: "family"
+
+"2061-09-11":
+  - name: "Maybe I will die"
+    icon: "🪦"
+    desc: "According to SSA actuarial table."
+    category: "self"
