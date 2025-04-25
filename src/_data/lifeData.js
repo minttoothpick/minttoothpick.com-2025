@@ -16,8 +16,20 @@ module.exports = function(data) {
 
   // Load timespans separately
   const timespans = lifeEvents.timespans || [];
-  // Remove timespans from main events
+  // Remove timespans array from main events
   delete lifeEvents.timespans;
+
+  // Inject timespan start as an event
+  for (const span of timespans) {
+    if (!lifeEvents[span.start]) lifeEvents[span.start] = [];
+    lifeEvents[span.start].push({
+      name: span.name + " begins",   // or just span.name
+      icon: span.icon,
+      category: span.category || "",
+      isTimespanStart: true,
+      timespan: span
+    });
+  }
 
   const startDateStr = data.start_date || "1985-02-11";
   const endYear = data.end_year || 2086;
