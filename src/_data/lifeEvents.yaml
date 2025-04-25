@@ -9,11 +9,6 @@
     icon: 👶
     category: family
 
-"2061-09-11":
-  - name: Maybe I will die (according to US SSA)
-    icon: 🪦
-    category: self
-
 "2021-04-02":
   - name: GE is born
     icon: 🤎
@@ -23,6 +18,21 @@
   - name: GN is born
     icon: 🤎
     category: family
+
+"2023-01-16":
+  - name: RIP HB
+    icon: 💔
+    category: losses
+
+"2023-05-24":
+  - name: RIP JJ
+    icon: 💔
+    category: losses
+
+"2061-09-11":
+  - name: Maybe I will die (according to US SSA)
+    icon: 🪦
+    category: self
 
 timespans:
   - name: Living in Orlando, FL
