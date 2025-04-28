@@ -6,7 +6,7 @@
  * https://every-layout.dev/layouts/stack/
  * https://piccalil.li/quick-tip/flow-utility/
  */
- .flow > * + * {
+.flow > * + * {
   margin-block-start: var(--flow-space, 1em);
   margin-top: var(--flow-space, 1em);
 }
