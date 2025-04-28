@@ -33,6 +33,7 @@ end_year: 2086
       <div
         class="week-box{% if week.isPast %} past{% endif %}"
         data-tippy-content="{{ tooltip | safe }}"
+        tabindex="0"
       >
         {% for event in week.events %}
           {% if not event.hide_from_grid %}
