@@ -62,12 +62,12 @@ html:focus-within {
 }
 
 /* This is b/c of injected Browsersync script. */
-script + *,
+/* script + *, */
 /* Don't want flow space taking effect here. */
-[hidden] + * {
+/* [hidden] + * {
   margin-block-start: 0 !important;
   margin-top: 0 !important;
-}
+} */
 
 h1,
 h2,
