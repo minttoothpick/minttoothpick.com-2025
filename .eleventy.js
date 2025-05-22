@@ -47,16 +47,20 @@ module.exports = (eleventyConfig) => {
    ======================================================================== */
 
   eleventyConfig.addNunjucksAsyncShortcode("imageRow", async function(images, caption = "") {
+    const srcDir = "src/images";
+    const outputDir = "dist/images";
+    const imgUrlPath = "/images/";
+
     try {
       const imageData = await Promise.all(
         images.map(async (image) => {
-          const fullImagePath = `src/images${image.src}`;
+          const fullImagePath = `${srcDir}${image.src}`;
 
           const metadata = await Image(fullImagePath, {
             widths: [300, 600, 900, 1200],
             formats: ["jpeg"],
-            outputDir: "./dist/images/",
-            urlPath: "/images/",
+            outputDir: outputDir,
+            urlPath: imgUrlPath,
             filenameFormat: (id, src, width, format) => {
               const filename = path.basename(src, path.extname(src));
               return `${filename}-${width}w.${format}`;
