@@ -1,5 +1,5 @@
 const dotenv = require("dotenv").config();
-const Image = require("@11ty/eleventy-img"); // Ensure this is correctly imported
+const Image = require("@11ty/eleventy-img");
 const path = require("path");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const yaml = require("js-yaml");
